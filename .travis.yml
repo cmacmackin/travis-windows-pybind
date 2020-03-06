@@ -15,7 +15,6 @@ env:
     PY_CMD: /c/Python38/python.exe
     PATH: /c/ProgramData/chocolatey/bin:/c/Python38:/c/Python38/Scripts:$PATH
     MK_CMD: mingw32-make
-    CMAKE_GENERATOR: MSYS\ Makefiles
     PY_EXE_PATH: ${PY_CMD}
     PY_LIB_PATH: /c/Python38/python38.dll
     PY_INC_PATH: /c/Python38/include
@@ -34,6 +33,7 @@ install:
   - $PY_CMD -m pip install --user pytest
 
 script:
+  - export CMAKE_GENERATOR="MSYS Makefiles"
   - cd ${TRAVIS_BUILD_DIR}
   - mkdir build
   - cd build
