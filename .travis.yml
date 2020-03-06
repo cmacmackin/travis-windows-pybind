@@ -22,11 +22,11 @@ env:
 
 # Use sed to replace the SSH URL with the public URL, then initialize submodules
 before_install:
-  - curl -L https://github.com/lucasg/Dependencies/releases/download/v1.10/Dependencies_x64_Release.zip --output dependencies.zip
-  - mkdir deps
-  - cd deps
-  - unzip ../dependencies.zip
-  - cd ..
+  #- curl -L https://github.com/lucasg/Dependencies/releases/download/v1.10/Dependencies_x64_Release.zip --output dependencies.zip
+  #- mkdir deps
+  #- cd deps
+  #- unzip ../dependencies.zip
+  #- cd ..
   - choco install python
 
 install:
