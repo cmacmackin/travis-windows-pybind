@@ -8,12 +8,22 @@ add_subdirectory(pybind11)
 
 set(PY_SOURCES cppmath.cpp)
 
-# Build and link the pylib module
-pybind11_add_module(CPPMATH MODULE ${PY_SOURCES})
-
 message("Printing debug information:")
 message($ENV{TRAVIS})
 message(${WIN32})
+message(${MINGW})
+if($ENV{TRAVIS} EQUAL "true")
+  message("In CI environment")
+endif()
+if(WIN32)
+  message("On Windows")
+endif()
+if($ENV{TRAVIS} EQUAL "true" AND WIN32)
+  message("Should statically link compiler libraries")
+endif()
+
+# Build and link the pylib module
+pybind11_add_module(CPPMATH MODULE ${PY_SOURCES})
 
 if($ENV{TRAVIS} EQUAL "true" AND WIN32)
   message("Statically linking compiler libraries")
