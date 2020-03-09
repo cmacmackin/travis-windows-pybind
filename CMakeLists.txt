@@ -12,20 +12,20 @@ message("Printing debug information:")
 message($ENV{TRAVIS})
 message(${WIN32})
 message(${MINGW})
-if("$ENV{TRAVIS}" EQUAL "true")
+if("$ENV{TRAVIS}" STREQUAL "true")
   message("In CI environment")
 endif()
 if(WIN32)
   message("On Windows")
 endif()
-if($ENV{TRAVIS} EQUAL "true" AND WIN32)
+if($ENV{TRAVIS} STREQUAL "true" AND WIN32)
   message("Should statically link compiler libraries")
 endif()
 
 # Build and link the pylib module
 pybind11_add_module(CPPMATH MODULE ${PY_SOURCES})
 
-if("$ENV{TRAVIS}" EQUAL "true" AND MINGW)
+if("$ENV{TRAVIS}" STREQUAL "true" AND MINGW)
   message("Statically linking compiler libraries")
   target_link_libraries(CPPMATH PRIVATE
     -static -static-libstdc++ -static-libgcc)
