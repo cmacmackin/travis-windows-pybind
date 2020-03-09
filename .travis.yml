@@ -33,7 +33,7 @@ install:
   - $PY_CMD -m pip install --user pytest
 
 script:
-  - export CMAKE_GENERATOR="MSYS Makefiles"
+  - export CMAKE_GENERATOR="MinGW Makefiles"
   - cd ${TRAVIS_BUILD_DIR}
   - mkdir build
   - cd build
