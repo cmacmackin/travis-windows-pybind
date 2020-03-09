@@ -9,10 +9,10 @@ add_subdirectory(pybind11)
 set(PY_SOURCES cppmath.cpp)
 
 # Build and link the pylib module
-pybind11_add_module(CPPMATH MODULE ${PY_SOURCES} NO_EXTRAS)
+pybind11_add_module(CPPMATH MODULE ${PY_SOURCES})
 
-#if("$ENV{TRAVIS}" STREQUAL "true" AND MINGW)
-#  target_compile_options(CPPMATH PRIVATE -fno-lto)
-#  target_link_libraries(CPPMATH PRIVATE -fno-lto
-#    -static -static-libstdc++ -static-libgcc)
-#endif()
+if("$ENV{TRAVIS}" STREQUAL "true" AND MINGW)
+  target_compile_options(CPPMATH PRIVATE -fno-lto)
+  target_link_libraries(CPPMATH PRIVATE -fno-lto
+    -static -static-libstdc++ -static-libgcc)
+endif()
