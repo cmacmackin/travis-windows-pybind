@@ -9,10 +9,9 @@ add_subdirectory(pybind11)
 set(PY_SOURCES cppmath.cpp)
 
 # Build and link the pylib module
-pybind11_add_module(CPPMATH MODULE ${PY_SOURCES})
+pybind11_add_module(CPPMATH MODULE ${PY_SOURCES} NO_EXTRAS)
 
 if("$ENV{TRAVIS}" STREQUAL "true" AND MINGW)
-  message("Statically linking compiler libraries")
-  target_link_libraries(CPPMATH PRIVATE -fno-use-linker-plugin
+  target_link_libraries(CPPMATH PRIVATE 
     -static -static-libstdc++ -static-libgcc)
 endif()
