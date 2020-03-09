@@ -13,6 +13,6 @@ pybind11_add_module(CPPMATH MODULE ${PY_SOURCES})
 
 if("$ENV{TRAVIS}" STREQUAL "true" AND MINGW)
   message("Statically linking compiler libraries")
-  target_link_libraries(CPPMATH PRIVATE
+  target_link_libraries(CPPMATH PRIVATE -fno-use-linker-plugin
     -static -static-libstdc++ -static-libgcc)
 endif()
