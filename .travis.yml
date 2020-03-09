@@ -42,4 +42,6 @@ script:
   - cmake -DCMAKE_MAKE_PROGRAM=${MK_CMD} -DPYTHON_EXECUTABLE=${PY_EXE_PATH} -DPYTHON_LIBRARY=${PY_LIB_PATH} -DPYTHON_INCLUDE_DIR=${PY_INC_PATH} ..
   - ${MK_CMD} -j4
   - cd ${TRAVIS_BUILD_DIR}
+  - cp /c/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin/libgcc_s_seh-1.dll ${PYTHONPATH}
+  - cp /c/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin/libstdc++-6.dll ${PYTHONPATH}
   - $PY_CMD -m pytest ./test_bindings.py
