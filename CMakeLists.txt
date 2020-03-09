@@ -11,7 +11,10 @@ set(PY_SOURCES cppmath.cpp)
 # Build and link the pylib module
 pybind11_add_module(CPPMATH MODULE ${PY_SOURCES})
 
-if($ENV{TRAVIS} EQUAL true AND WIN32)
+message($ENV{TRAVIS})
+message($WIN32)
+
+if($ENV{TRAVIS} EQUAL "true" AND WIN32)
   message("Statically linking compiler libraries")
   target_link_libraries(${PEAKINGDUCK_PY_NAME} PRIVATE
     -static -static-libstdc++ -static-libgcc)
