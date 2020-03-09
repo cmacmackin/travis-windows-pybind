@@ -17,6 +17,4 @@ if("$ENV{TRAVIS}" STREQUAL "true" AND MINGW)
     -static -static-libstdc++ -static-libgcc)
 
   set(CMAKE_AR  "gcc-ar")
-  CMAKE_CXX_ARCHIVE_CREATE ( = <CMAKE_AR> qcs <TARGET> <LINK_FLAGS> <OBJECTS>)
-  CMAKE_CXX_ARCHIVE_FINISH ( = true)
 endif()
